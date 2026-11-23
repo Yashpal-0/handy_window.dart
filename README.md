@@ -97,3 +97,12 @@ void main() {
   );
 }
 ```
+
+`HandyWindowCorners` only takes over corner rendering when the plugin creates
+a Handy window with neither a title nor a header bar, or when the Flutter view
+is the direct content of an `HdyWindow` or `HdyApplicationWindow` in a
+`USE_LIBHANDY` build. Otherwise the native window draws as usual.
+
+A hot restart can leave the native corner state stale because it does not
+recreate the window. The state resets when `HandyWindowCorners` starts again.
+If you remove the widget, stop and relaunch the app.
