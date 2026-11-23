@@ -315,7 +315,8 @@ static void corners_method_cb(FlMethodChannel*, FlMethodCall* call,
     responded = fl_method_call_respond_not_implemented(call, &error);
   }
   if (!responded) {
-    g_warning("Failed to respond to %s: %s", method, error->message);
+    g_warning("Failed to respond to %s: %s", method,
+              error != nullptr ? error->message : "unknown error");
   }
 }
 
